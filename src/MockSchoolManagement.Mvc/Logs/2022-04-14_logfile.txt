@@ -1,0 +1,64 @@
+2022-04-14 13:18:57.8301 DEBUG Starting host builder
+2022-04-14 13:19:05.2595 ERROR Failed executing DbCommand (313ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Person` AS `p`
+    WHERE `p`.`Discriminator` = 'Student')
+2022-04-14 13:19:05.4010 ERROR An exception occurred while iterating over the results of a query for context type 'MockSchoolManagement.EntityFrameworkCore.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Table 'mockschooldb.person' doesn't exist
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Table 'mockschooldb.person' doesn't exist
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ResultSet.cs:line 49
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlCommand.cs:line 217
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2022-04-14 13:19:05.4459 FATAL Application startup exception
+2022-04-14 13:19:05.5581 ERROR Stopped program because of exception
+2022-04-14 14:27:18.2743 DEBUG Starting host builder
+2022-04-14 14:27:22.0305 FATAL Application startup exception
+2022-04-14 14:27:22.1759 ERROR Stopped program because of exception
+2022-04-14 14:34:35.1091 ERROR Failed executing DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `Departments` (
+    `DepartmentID` int NOT NULL AUTO_INCREMENT,
+    `Name` varchar(50) CHARACTER SET utf8mb4 NULL,
+    `Budget` money NOT NULL,
+    `StartDate` datetime(6) NOT NULL,
+    `RowVersion` timestamp(6) NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+    `TeacherID` int NULL,
+    CONSTRAINT `PK_Departments` PRIMARY KEY (`DepartmentID`),
+    CONSTRAINT `FK_Departments_Person_TeacherID` FOREIGN KEY (`TeacherID`) REFERENCES `Person` (`Id`) ON DELETE RESTRICT
+);
+2022-04-14 14:35:10.7192 ERROR Failed executing DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `AspNetRoles` (
+    `Id` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Name` varchar(256) CHARACTER SET utf8mb4 NULL,
+    `NormalizedName` varchar(256) CHARACTER SET utf8mb4 NULL,
+    `ConcurrencyStamp` longtext CHARACTER SET utf8mb4 NULL,
+    CONSTRAINT `PK_AspNetRoles` PRIMARY KEY (`Id`)
+);
+2022-04-14 14:35:50.2702 ERROR Failed executing DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `Departments` (
+    `DepartmentID` int NOT NULL AUTO_INCREMENT,
+    `Name` varchar(50) CHARACTER SET utf8mb4 NULL,
+    `Budget` money NOT NULL,
+    `StartDate` datetime(6) NOT NULL,
+    `RowVersion` timestamp(6) NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+    `TeacherID` int NULL,
+    CONSTRAINT `PK_Departments` PRIMARY KEY (`DepartmentID`),
+    CONSTRAINT `FK_Departments_Person_TeacherID` FOREIGN KEY (`TeacherID`) REFERENCES `Person` (`Id`) ON DELETE RESTRICT
+);
+2022-04-14 14:39:39.1504 DEBUG Starting host builder
+2022-04-14 14:39:44.5425 INFO Now listening on: http://localhost:3200
+2022-04-14 14:39:44.5425 INFO Application started. Press Ctrl+C to shut down.
+2022-04-14 14:39:44.5425 INFO Hosting environment: Development
+2022-04-14 14:39:44.5708 INFO Content root path: F:\MockSchool-master\MockSchoolManagement\src\MockSchoolManagement.Mvc
+2022-04-14 14:43:02.1725 DEBUG Starting host builder
+2022-04-14 14:43:08.2765 INFO Now listening on: http://localhost:3200
+2022-04-14 14:43:08.2765 INFO Application started. Press Ctrl+C to shut down.
+2022-04-14 14:43:08.2947 INFO Hosting environment: Development
+2022-04-14 14:43:08.2947 INFO Content root path: F:\MockSchool-master-MySql\MockSchoolManagement\src\MockSchoolManagement.Mvc
