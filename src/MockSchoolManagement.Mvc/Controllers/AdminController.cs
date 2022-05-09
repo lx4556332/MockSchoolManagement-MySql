@@ -370,7 +370,7 @@ namespace MockSchoolManagement.Controllers
         #region 管理用户中的角色
 
         [HttpGet]
-        [Authorize(Policy = "EditRolePolicy")]
+        //[Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult> ManageUserRoles(string userId)
         {
             ViewBag.userId = userId;
@@ -410,7 +410,7 @@ namespace MockSchoolManagement.Controllers
         }
 
         [HttpPost]
-        [Authorize(Policy = "EditRolePolicy")]
+        //[Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult> ManageUserRoles(List<RolesInUserViewModel> model, string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);

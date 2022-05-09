@@ -14,9 +14,9 @@ namespace MockSchoolManagement.DataRepositories
         {
             _studentList = new List<Student>()
             {
-            new Student() { Id = 1, Name = "张三", Major = MajorEnum.ComputerScience, Email = "zhangsan@52abp.com" },
-            new Student() { Id = 2, Name = "李四", Major = MajorEnum.Mathematics, Email = "lisi@52abp.com" },
-            new Student() { Id = 3, Name = "赵六", Major = MajorEnum.ElectronicCommerce, Email = "zhaoliu@52abp.com" },
+            new Student() { Id = 1, Name = "张三", Major = MajorEnum.ComputerScience, Email = "zhangsan@126.com" },
+            new Student() { Id = 2, Name = "李四", Major = MajorEnum.Mathematics, Email = "lisi@126.com" },
+            new Student() { Id = 3, Name = "赵六", Major = MajorEnum.ElectronicCommerce, Email = "zhaoliu@126.com" },
             };
         }
  

@@ -1,0 +1,159 @@
+2022-05-09 14:52:10.3091 DEBUG Starting host builder
+2022-05-09 14:52:21.2015 ERROR Failed executing DbCommand (504ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `AspNetRoleClaims` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `RoleId` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `ClaimType` longtext CHARACTER SET utf8mb4 NULL,
+    `ClaimValue` longtext CHARACTER SET utf8mb4 NULL,
+    CONSTRAINT `PK_AspNetRoleClaims` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `AspNetRoles` (`Id`) ON DELETE RESTRICT
+);
+2022-05-09 14:52:21.2765 FATAL Application startup exception
+2022-05-09 14:52:21.4601 ERROR Stopped program because of exception
+2022-05-09 14:52:45.1495 DEBUG Starting host builder
+2022-05-09 14:52:49.6584 ERROR Failed executing DbCommand (292ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `AspNetRoles` (
+    `Id` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Name` varchar(256) CHARACTER SET utf8mb4 NULL,
+    `NormalizedName` varchar(256) CHARACTER SET utf8mb4 NULL,
+    `ConcurrencyStamp` longtext CHARACTER SET utf8mb4 NULL,
+    CONSTRAINT `PK_AspNetRoles` PRIMARY KEY (`Id`)
+);
+2022-05-09 14:52:49.7337 FATAL Application startup exception
+2022-05-09 14:52:49.9252 ERROR Stopped program because of exception
+2022-05-09 14:54:47.5474 DEBUG Starting host builder
+2022-05-09 14:54:54.1671 ERROR An error occurred using the connection to database '' on server '172.21.4.210'.
+2022-05-09 14:54:54.3801 FATAL Application startup exception
+2022-05-09 14:54:54.5537 ERROR Stopped program because of exception
+2022-05-09 14:58:15.5880 DEBUG Starting host builder
+2022-05-09 14:58:22.0528 INFO Now listening on: http://localhost:3200
+2022-05-09 14:58:22.0558 INFO Application started. Press Ctrl+C to shut down.
+2022-05-09 14:58:22.0558 INFO Hosting environment: Development
+2022-05-09 14:58:22.0710 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc
+2022-05-09 15:00:32.2763 ERROR An error occurred using the connection to database 'MockSchoolDB' on server '172.21.4.210'.
+2022-05-09 15:00:32.4295 ERROR An exception occurred while iterating over the results of a query for context type 'MockSchoolManagement.EntityFrameworkCore.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown database 'mockschooldb'
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 426
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 670
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 332
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 280
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2022-05-09 15:00:32.9360 ERROR An unhandled exception has occurred while executing the request.
+2022-05-09 15:00:33.4253 ERROR An error occurred using the connection to database 'MockSchoolDB' on server '172.21.4.210'.
+2022-05-09 15:00:33.5044 ERROR An exception occurred while iterating over the results of a query for context type 'MockSchoolManagement.EntityFrameworkCore.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown database 'mockschooldb'
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 426
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 670
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 332
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 280
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2022-05-09 15:00:33.9855 ERROR An unhandled exception has occurred while executing the request.
+2022-05-09 15:00:38.0706 ERROR An error occurred using the connection to database 'MockSchoolDB' on server '172.21.4.210'.
+2022-05-09 15:00:38.1257 ERROR An exception occurred while iterating over the results of a query for context type 'MockSchoolManagement.EntityFrameworkCore.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown database 'mockschooldb'
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 426
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 670
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 332
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 280
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2022-05-09 15:00:38.5722 ERROR An unhandled exception has occurred while executing the request.
+2022-05-09 15:00:43.7495 ERROR An error occurred using the connection to database 'MockSchoolDB' on server '172.21.4.210'.
+2022-05-09 15:00:43.8153 ERROR An exception occurred while iterating over the results of a query for context type 'MockSchoolManagement.EntityFrameworkCore.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown database 'mockschooldb'
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 426
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 670
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 332
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 280
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2022-05-09 15:00:44.5070 ERROR An unhandled exception has occurred while executing the request.
+2022-05-09 15:00:47.3590 ERROR An error occurred using the connection to database 'MockSchoolDB' on server '172.21.4.210'.
+2022-05-09 15:00:47.4145 ERROR An exception occurred while iterating over the results of a query for context type 'MockSchoolManagement.EntityFrameworkCore.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown database 'mockschooldb'
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 426
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 670
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 332
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 280
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2022-05-09 15:00:48.0896 ERROR An unhandled exception has occurred while executing the request.
+2022-05-09 15:00:49.7971 ERROR An error occurred using the connection to database 'MockSchoolDB' on server '172.21.4.210'.
+2022-05-09 15:00:49.8506 ERROR An exception occurred while iterating over the results of a query for context type 'MockSchoolManagement.EntityFrameworkCore.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown database 'mockschooldb'
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 426
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 143
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 670
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 332
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 280
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2022-05-09 15:00:50.4786 ERROR An unhandled exception has occurred while executing the request.
+2022-05-09 15:05:05.6228 DEBUG Starting host builder
+2022-05-09 15:05:10.5529 INFO Now listening on: http://localhost:3200
+2022-05-09 15:05:10.5559 INFO Application started. Press Ctrl+C to shut down.
+2022-05-09 15:05:10.5705 INFO Hosting environment: Development
+2022-05-09 15:05:10.5855 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc
+2022-05-09 15:15:34.3407 DEBUG Starting host builder
+2022-05-09 15:15:40.9286 INFO Now listening on: http://localhost:3200
+2022-05-09 15:15:40.9286 INFO Application started. Press Ctrl+C to shut down.
+2022-05-09 15:15:40.9286 INFO Hosting environment: Development
+2022-05-09 15:15:40.9286 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc
+2022-05-09 15:36:09.7095 DEBUG Starting host builder
+2022-05-09 15:36:14.1777 INFO Now listening on: http://localhost:3200
+2022-05-09 15:36:14.1809 INFO Application started. Press Ctrl+C to shut down.
+2022-05-09 15:36:14.2100 INFO Hosting environment: Development
+2022-05-09 15:36:14.2100 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc
+2022-05-09 15:38:00.7893 DEBUG Starting host builder
+2022-05-09 15:38:05.0900 INFO Now listening on: http://localhost:3200
+2022-05-09 15:38:05.0900 INFO Application started. Press Ctrl+C to shut down.
+2022-05-09 15:38:05.1103 INFO Hosting environment: Development
+2022-05-09 15:38:05.1103 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc
+2022-05-09 17:04:45.6653 DEBUG Starting host builder
+2022-05-09 17:04:53.4983 INFO Now listening on: http://localhost:3200
+2022-05-09 17:04:53.4983 INFO Application started. Press Ctrl+C to shut down.
+2022-05-09 17:04:53.5138 INFO Hosting environment: Development
+2022-05-09 17:04:53.5138 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc

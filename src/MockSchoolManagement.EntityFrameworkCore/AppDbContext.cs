@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MockSchoolManagement.Core.Models;
 using MockSchoolManagement.Infrastructure;
 using MockSchoolManagement.Infrastructure.EntityMapper;
 using MockSchoolManagement.Models;
@@ -29,6 +30,8 @@ namespace MockSchoolManagement.EntityFrameworkCore
         public DbSet<Person> People { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Company> Companys { get; set; }
 
         public DbSet<TodoItem> TodoItems { get; set; }
 

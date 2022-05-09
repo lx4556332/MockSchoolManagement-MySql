@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MockSchoolManagement.EntityFrameworkCore.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,6 +60,19 @@ namespace MockSchoolManagement.EntityFrameworkCore.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Blog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Companys",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CompanyName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Companys", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -449,6 +462,9 @@ namespace MockSchoolManagement.EntityFrameworkCore.Migrations
 
             migrationBuilder.DropTable(
                 name: "BlogImage");
+
+            migrationBuilder.DropTable(
+                name: "Companys");
 
             migrationBuilder.DropTable(
                 name: "CourseAssignments");

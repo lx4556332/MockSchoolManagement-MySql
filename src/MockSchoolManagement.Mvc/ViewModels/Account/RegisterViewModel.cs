@@ -15,8 +15,6 @@ namespace MockSchoolManagement.ViewModels
         [EmailAddress]
         [Display(Name = "邮箱")]
         [Remote(action: "IsEmailInUse", controller: "Account")]
-        [ValidEmailDomain(allowedDomain: "52abp.com",
-        ErrorMessage = "电子邮件的后缀必须是52abp.com")]
         public string Email { get; set; }
 
         [Required]

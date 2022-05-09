@@ -62,3 +62,18 @@ CREATE TABLE `Departments` (
 2022-04-14 14:43:08.2765 INFO Application started. Press Ctrl+C to shut down.
 2022-04-14 14:43:08.2947 INFO Hosting environment: Development
 2022-04-14 14:43:08.2947 INFO Content root path: F:\MockSchool-master-MySql\MockSchoolManagement\src\MockSchoolManagement.Mvc
+2022-04-14 14:58:07.5617 DEBUG Starting host builder
+2022-04-14 14:58:12.7600 INFO Now listening on: http://localhost:3200
+2022-04-14 14:58:12.7600 INFO Application started. Press Ctrl+C to shut down.
+2022-04-14 14:58:12.7600 INFO Hosting environment: Development
+2022-04-14 14:58:12.7600 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc
+2022-04-14 17:12:19.5403 DEBUG Starting host builder
+2022-04-14 17:12:25.9475 INFO Now listening on: http://localhost:3200
+2022-04-14 17:12:25.9643 INFO Application started. Press Ctrl+C to shut down.
+2022-04-14 17:12:25.9643 INFO Hosting environment: Development
+2022-04-14 17:12:25.9643 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc
+2022-04-14 17:14:39.1649 DEBUG Starting host builder
+2022-04-14 17:14:43.1495 INFO Now listening on: http://localhost:3200
+2022-04-14 17:14:43.1665 INFO Application started. Press Ctrl+C to shut down.
+2022-04-14 17:14:43.1665 INFO Hosting environment: Development
+2022-04-14 17:14:43.1665 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc

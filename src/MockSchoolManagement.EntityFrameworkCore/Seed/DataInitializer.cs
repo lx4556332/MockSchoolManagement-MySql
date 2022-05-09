@@ -44,9 +44,9 @@ namespace MockSchoolManagement.Infrastructure.Data
                 }
 
                 var students = new[] {
-                    new Student { Name = "张三", Major = MajorEnum.ComputerScience, Email = "zhangsan@52abp.com", EnrollmentDate = DateTime.Parse ("2016-09-01"), },
-                    new Student { Name = "李四", Major = MajorEnum.Mathematics, Email = "lisi@52abp.com", EnrollmentDate = DateTime.Parse ("2017-09-01") },
-                    new Student { Name = "王五", Major = MajorEnum.ElectronicCommerce, Email = "wangwu@52abp.com", EnrollmentDate = DateTime.Parse ("2012-09-01") }
+                    new Student { Name = "张三", Major = MajorEnum.ComputerScience, Email = "zhangsan@126.com", EnrollmentDate = DateTime.Parse ("2016-09-01"), },
+                    new Student { Name = "李四", Major = MajorEnum.Mathematics, Email = "lisi@126.com", EnrollmentDate = DateTime.Parse ("2017-09-01") },
+                    new Student { Name = "王五", Major = MajorEnum.ElectronicCommerce, Email = "wangwu@126.com", EnrollmentDate = DateTime.Parse ("2012-09-01") }
                 };
                 foreach (Student item in students)
                 {

@@ -200,7 +200,7 @@ namespace MockSchoolManagement
                     Title = "MockSchoolManagement API",
                     Description = "为MockSchoolManagement系统，添加一个简单的ASP.NET Core Web API示例。",
                     Version = "v1",
-                    TermsOfService = new Uri("https://sc.52abp.com"),
+                    TermsOfService = new Uri("https://baidu.com"),
                 });
                 if (_env.IsDevelopment())
                 {
