@@ -157,3 +157,13 @@ MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown database 'mockschool
 2022-05-09 17:04:53.4983 INFO Application started. Press Ctrl+C to shut down.
 2022-05-09 17:04:53.5138 INFO Hosting environment: Development
 2022-05-09 17:04:53.5138 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc
+2022-05-09 18:41:20.4518 DEBUG Starting host builder
+2022-05-09 18:41:25.0242 INFO Now listening on: http://localhost:3200
+2022-05-09 18:41:25.0242 INFO Application started. Press Ctrl+C to shut down.
+2022-05-09 18:41:25.0242 INFO Hosting environment: Development
+2022-05-09 18:41:25.0385 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc
+2022-05-09 18:49:35.1481 DEBUG Starting host builder
+2022-05-09 18:49:39.2537 INFO Now listening on: http://localhost:3200
+2022-05-09 18:49:39.2568 INFO Application started. Press Ctrl+C to shut down.
+2022-05-09 18:49:39.2568 INFO Hosting environment: Development
+2022-05-09 18:49:39.2735 INFO Content root path: F:\MockSchool-master-MySql\src\MockSchoolManagement.Mvc

@@ -50,7 +50,7 @@ namespace MockSchoolManagement.Models
 
 
         /// <summary>
-        /// 语文成绩
+        /// 数学成绩
         /// </summary>
         public float MathScore { get; set; }
 

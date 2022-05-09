@@ -16,6 +16,12 @@ namespace MockSchoolManagement.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// 班级编号
+        /// </summary>
+        public string ClassCode { get; set; }
+
+
+        /// <summary>
         /// 预算
         /// </summary>
         [DataType(DataType.Currency)]
@@ -42,5 +48,23 @@ namespace MockSchoolManagement.Models
         /// </summary
         public virtual Teacher Administrator { get; set; }
         public virtual ICollection<Course> Courses { get; set; }
+
+
+        /// <summary>
+        /// 班主任名称
+        /// </summary>
+        public string HeadTeacherName { get; set; }
+
+
+        /// <summary>
+        /// 班主任联系方式
+        /// </summary>
+        public string HeadTeacherPhone { get; set; }
+
+
+        /// <summary>
+        /// 班级日常评分
+        /// </summary>
+        public float ClassScore { get; set; }
     }
 }

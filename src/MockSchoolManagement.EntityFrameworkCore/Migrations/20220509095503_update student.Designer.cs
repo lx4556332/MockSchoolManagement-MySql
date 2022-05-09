@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MockSchoolManagement.EntityFrameworkCore;
 
 namespace MockSchoolManagement.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220509095503_update student")]
+    partial class updatestudent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -338,18 +340,6 @@ namespace MockSchoolManagement.EntityFrameworkCore.Migrations
                     b.Property<decimal>("Budget")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("ClassCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<float>("ClassScore")
-                        .HasColumnType("float");
-
-                    b.Property<string>("HeadTeacherName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("HeadTeacherPhone")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("Name")
                         .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
@@ -496,29 +486,8 @@ namespace MockSchoolManagement.EntityFrameworkCore.Migrations
                 {
                     b.HasBaseType("MockSchoolManagement.Models.Person");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<DateTime>("HireDate")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("TeachClass")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TeachCourseName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TeacherCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TeacherName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TeacherPhone")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasDiscriminator().HasValue("Teacher");
                 });
