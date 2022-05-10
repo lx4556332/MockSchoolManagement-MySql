@@ -16,6 +16,7 @@ using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Linq.Dynamic.Core;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MockSchoolManagement.Controllers
@@ -58,6 +59,15 @@ namespace MockSchoolManagement.Controllers
                 s.EncryptedId = _protector.Protect(s.Id.ToString());
                 return s;
             }).ToList();
+
+            if (User.IsInRole("学生"))
+            {
+                var username = User.Claims.Where(i => i.Type == ClaimTypes.Name).Select(c => c.Value).SingleOrDefault(); ;
+                var entity = dtos.Data.Where(t => t.Name == username).FirstOrDefault();
+                if (entity != null)
+                    return RedirectToAction("Details", new { id = entity.EncryptedId });
+            }
+
             return View(dtos);
         }
 
