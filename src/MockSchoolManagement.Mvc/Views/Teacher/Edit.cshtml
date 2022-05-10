@@ -2,52 +2,102 @@
 @model TeacherCreateViewModel
 @{ ViewBag.Title = "编辑教师信息"; }
 
-<form asp-action="edit" method="post" class="mt-3">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group row">
-        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="Name" class="form-control" placeholder="请输入教师名称" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label asp-for="HireDate" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="HireDate" type="date" class="form-control" placeholder="请输入聘用时间" />
-            <span asp-validation-for="HireDate" class="text-danger"></span>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label asp-for="OfficeLocation.Location" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="OfficeLocation.Location" class="form-control" placeholder="请输入办公室地址" />
-            <span asp-validation-for="OfficeLocation.Location" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-
-        @for (int i = 0; i < Model.AssignedCourses.Count; i++)
-        {
-
-            <div class="form-check form-check-inline">
-                <input type="hidden" asp-for="@Model.AssignedCourses[i].CourseID" />
-                <input asp-for="@Model.AssignedCourses[i].IsSelected" class="form-check-input" />
-                <label class="form-check-label" asp-for="@Model.AssignedCourses[i].IsSelected">
-                    @Model.AssignedCourses[i].Title
-                </label>
+<div class="container">
+    <form asp-action="edit" method="post" class="mt-3">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group row">
+            <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Name" class="form-control" placeholder="请输入教师名称" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-
-        }
-    </div>
-
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">更新</button>
-            <a asp-action="index" class="btn btn-primary">取消</a>
         </div>
-    </div>
-</form>
+
+        <div class="form-group row">
+            <label asp-for="UserCode" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="UserCode" class="form-control" placeholder="请输入教师编号" />
+                <span asp-validation-for="UserCode" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="UserSex" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <select asp-for="UserSex"
+                        class="custom-select mr-sm-2">
+                    <option value="">请选择</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Age" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Age" class="form-control" placeholder="请输入年龄" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Title" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Title" class="form-control" placeholder="请输入职称" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="TeacherPhone" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="TeacherPhone" class="form-control" placeholder="请输入教师联系方式" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Address" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Address" class="form-control" placeholder="请输入办公室地址" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="TeachClass" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <select asp-for="TeachClass"
+                        class="custom-select mr-sm-2">
+                    <option value="">请选择</option>
+                    <option value="七年级一班">
+                        七年级一班
+                    </option>
+                    <option value="七年级二班">七年级二班</option>
+                    <option value="七年级三班">七年级三班</option>
+                    <option value="七年级四班">七年级四班</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="TeachCourseName" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <select asp-for="TeachCourseName"
+                        class="custom-select mr-sm-2">
+                    <option value="">请选择</option>
+                    <option value="语文">
+                        语文
+                    </option>
+                    <option value="数学">数学</option>
+                    <option value="英语">英语</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-12 text-center">
+                <a asp-action="Index" class="btn btn-info">返回</a>
+                <button type="submit" class="btn btn-primary">更新</button>
+            </div>
+        </div>
+    </form>
+   </div>

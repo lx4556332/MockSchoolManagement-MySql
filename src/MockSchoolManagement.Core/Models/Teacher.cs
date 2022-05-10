@@ -9,10 +9,8 @@ namespace MockSchoolManagement.Models
     /// </summary>
     public class Teacher : Person
     {
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "聘用时间")]
-        public DateTime HireDate { get; set; }
+
+        public DateTime? HireDate { get; set; }
 
         /// <summary>
         /// 职称

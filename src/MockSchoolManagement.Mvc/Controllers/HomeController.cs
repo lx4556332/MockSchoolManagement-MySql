@@ -332,6 +332,58 @@ namespace MockSchoolManagement.Controllers
             return View(groups);
         }
 
+        /// <summary>
+        ///  通讯录获取
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ActionResult> AddressBook()
+        {
+            List<AddressBookDto> groups = new List<AddressBookDto>();
+            //获取数据库的上下文链接
+            var conn = _dbcontext.Database.GetDbConnection();
+            try
+            {    //打开数据库链接
+                await conn.OpenAsync();
+                //建立链接，因为非委托资源所以需要使用using进行内存资源的释放
+                using (var command = conn.CreateCommand())
+                {
+                    string query = @"select* from(
+select '学生家长' usertype, parentName name, parentphoneno phoneno from  person WHERE Discriminator = 'Student'
+union all
+select '教师' usertype, name ,TeacherPhone phoneno from person WHERE Discriminator = 'Teacher'
+) tab";
+                    command.CommandText = query; //赋值需要执行的sql命令
+                    DbDataReader reader = await command.ExecuteReaderAsync();//执行命令
+                    if (reader.HasRows)//判断是否有返回行
+                    {       //读取行数据 ，将返回值填充到视图模型中
+                        while (await reader.ReadAsync())
+                        {
+                            var row = new AddressBookDto
+                            {
+                                usertype = reader.GetString(0),
+                                name = reader.GetString(1),
+                                phoneno = reader.GetString(2)
+                            };
+                            groups.Add(row);
+                        }
+                    }
+                    //释放使用的所有的资源
+                    reader.Dispose();
+                }
+            }
+            finally
+            {  //关闭数据库连接。
+                conn.Close();
+            }
+            return View(groups);
+
+
+
+
+
+        }
+
+
         #region 私有方法
 
         /// <summary>

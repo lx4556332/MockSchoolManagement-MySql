@@ -21,4 +21,17 @@ namespace MockSchoolManagement.Application.Students.Dtos
 
         public int StudentCount { get; set; }
     }
+
+    /// <summary>
+    /// 通讯录
+    /// </summary>
+    public class AddressBookDto
+    {
+
+        public string usertype { get; set; }
+
+        public string name { get; set; }
+
+        public string phoneno { get; set; }
+    }
 }

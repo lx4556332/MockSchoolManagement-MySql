@@ -1,0 +1,40 @@
+﻿@using MockSchoolManagement.Application.Students.Dtos;
+@model IEnumerable<AddressBookDto>
+@{ ViewBag.Title = "通讯录信息"; }
+
+<h1>
+    通讯录信息
+</h1>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">类型</th>
+                <th scope="col">姓名</th>
+                <th scope="col">电话</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @item.usertype
+                </td>
+                <td>
+                    @item.name
+                </td>
+                <td>
+                    @item.phoneno
+                </td>
+            </tr>}
+        </tbody>
+    </table>
+    <div class="form-group row">
+        <div class="col-sm-12 text-center">
+            <a asp-action="Index" asp-controller="home" class="btn btn-info">返回</a>
+        </div>
+    </div>
+</div>

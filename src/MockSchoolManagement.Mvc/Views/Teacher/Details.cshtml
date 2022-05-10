@@ -1,41 +1,75 @@
-﻿@model Course
-@{
+﻿@using  MockSchoolManagement.ViewModels.Teachers
+@model TeacherCreateViewModel
+@{ ViewBag.Title = "教师信息详情"; }
 
-    ViewBag.Title = "课程详情信息";
-    
-}
- 
 <div class="row justify-content-center m-3">
     <div class="col-sm-6">
-
-        <div class="card bg-light mb-3" style="max-width: 18rem;">
+        <div class="card">
             <div class="card-header">
-                <h1>@Model.Title  详情 </h1>
+                <h3>@Model.Name</h3>
             </div>
-             
-            <div class="card-body text-center">
-
-                <h5 class="card-title">
-                    @Html.DisplayNameFor(a => a.Title) : @Model.Title
-                </h5>
-
-                <h5 class="card-title">@Html.DisplayNameFor(a=>a.CourseID) : @Model.CourseID</h5>
-                <h5 class="card-title">@Html.DisplayNameFor(a=>a.DepartmentID) : @Model.Department.Name</h5>
-                <h5 class="card-title">@Html.DisplayNameFor(a=>a.Credits): @Model.Credits</h5>
-
-            </div>          
- 
-
-            <div class="card-footer text-center">
-                <a asp-action="Index"   class="btn btn-info">返回</a>
-                <a asp-action="edit"   asp-route-courseId="@Model.CourseID" class="btn btn-primary">编辑</a>
-               
+            <div class="form-group row">
+                <label class="col-sm-3 offset-3 text-right">教师编号：</label>
+                <label class="col-sm-6 text-left">
+                    @Model.UserCode
+                </label>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 offset-3 text-right">教师姓名：</label>
+                <label class="col-sm-6 text-left">
+                    @Model.Name
+                </label>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 offset-3 text-right">性 别：</label>
+                <label class="col-sm-6 text-left">
+                    @Model.UserSex
+                </label>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 offset-3 text-right">年 龄：</label>
+                <label class="col-sm-6 text-left">
+                    @Model.Age
+                </label>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 offset-3 text-right">职 称：</label>
+                <label class="col-sm-6 text-left">
+                    @Model.Title
+                </label>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 offset-3 text-right">联系方式：</label>
+                <label class="col-sm-6 text-left">
+                    @Model.TeacherPhone
+                </label>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 offset-3 text-right">办公室地址：</label>
+                <label class="col-sm-6 text-left">
+                    @Model.Address
+                </label>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 offset-3 text-right">教授班级名称：</label>
+                <label class="col-sm-6 text-left">
+                    @Model.TeachClass
+                </label>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 offset-3 text-right">教授课程名称：</label>
+                <label class="col-sm-6 text-left">
+                    @Model.TeachCourseName
+                </label>
             </div>
         </div>
 
+        <div class="card-footer text-center">
+            <a asp-action="Index" asp-controller="home" class="btn btn-info">返回</a>
+        </div>
     </div>
-</div>   
+</div>
 
 @section Scripts{
-        <script src="~/js/CustomScript.js"></script>
+    <script src="~/js/CustomScript.js"></script>
 }

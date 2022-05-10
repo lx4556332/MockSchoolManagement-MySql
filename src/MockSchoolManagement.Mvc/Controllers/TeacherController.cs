@@ -18,14 +18,18 @@ namespace MockSchoolManagement.Controllers
         private readonly IRepository<Course, int> _courseRepository;
         private readonly IRepository<OfficeLocation, int> _officeLoactionRepository;
         private readonly IRepository<CourseAssignment, int> _courseAssignmentRepository;
+        private readonly IRepository<Department,int> _departmentRepository;
 
-        public TeacherController(ITeacherService teacherService, IRepository<Teacher, int> teacherRepository, IRepository<Course, int> courseRepository, IRepository<OfficeLocation, int> officeLoactionRepository, IRepository<CourseAssignment, int> courseAssignmentRepository)
+
+        public TeacherController(ITeacherService teacherService, IRepository<Teacher, int> teacherRepository, IRepository<Course, int> courseRepository, IRepository<OfficeLocation, int> officeLoactionRepository, IRepository<CourseAssignment, int> courseAssignmentRepository,
+            IRepository<Department, int> departmentRepository)
         {
             _teacherService = teacherService;
             _teacherRepository = teacherRepository;
             _courseRepository = courseRepository;
             _officeLoactionRepository = officeLoactionRepository;
             _courseAssignmentRepository = courseAssignmentRepository;
+            _departmentRepository = departmentRepository;
         }
 
         public async Task<IActionResult> Index(GetTeacherInput input)
@@ -60,23 +64,21 @@ namespace MockSchoolManagement.Controllers
 
         public IActionResult Create()
         {
-            var allCourses = _courseRepository.GetAllList();
-            var viewModel = new List<AssignedCourseViewModel>();
-            foreach (var course in allCourses)
-            {
-                viewModel.Add(new AssignedCourseViewModel
-                {
-                    CourseID = course.CourseID,
-                    Title = course.Title,
-                    IsSelected = false
-                });
-            }
-            var dto = new TeacherCreateViewModel
-            {
-                AssignedCourses = viewModel
-            };
+            //var allCourses = _departmentRepository.GetAllList();
+            //var viewModel = new List<AssignedDepartmentViewModel>();
+            //foreach (var course in allCourses)
+            //{
+            //    viewModel.Add(new AssignedDepartmentViewModel
+            //    {
+            //        DepartmentId = course.DepartmentID,
+            //        Name = course.Name,
+            //        IsSelected = false
+            //    });
+            //}
+            //ViewBag.Departments = viewModel;
 
-            return View(dto);
+            var viewModel = new TeacherCreateViewModel();
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -88,14 +90,22 @@ namespace MockSchoolManagement.Controllers
                 {
                     HireDate = input.HireDate,
                     Name = input.Name,
-                    OfficeLocation = input.OfficeLocation,
-                    CourseAssignments = new List<CourseAssignment>()
+                    UserCode=input.UserCode,
+                    UserSex=input.UserSex,
+                    Age=input.Age,
+                    Title=input.Title,
+                    TeacherPhone=input.TeacherPhone,
+                    Address=input.Address,
+                    TeachCourseName=input.TeachCourseName,
+                    TeachClass=input.TeachClass
+                    ////OfficeLocation = input.OfficeLocation,
+                    //CourseAssignments = new List<CourseAssignment>()
                 };
-                var courses = input.AssignedCourses.Where(a => a.IsSelected == true).ToList();
-                foreach (var item in courses)
-                {
-                    teacher.CourseAssignments.Add(new CourseAssignment { CourseID = item.CourseID, TeacherID = teacher.Id });
-                }
+                //var courses = input.AssignedCourses.Where(a => a.IsSelected == true).ToList();
+                //foreach (var item in courses)
+                //{
+                //    teacher.CourseAssignments.Add(new CourseAssignment { CourseID = item.CourseID, TeacherID = teacher.Id });
+                //}
                 await _teacherRepository.InsertAsync(teacher);
                 return RedirectToAction(nameof(Index));
             }
@@ -107,8 +117,7 @@ namespace MockSchoolManagement.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            var model = await _teacherRepository.GetAll().Include(a => a.OfficeLocation)
-                    .Include(a => a.CourseAssignments).ThenInclude(a => a.Course)
+            var model = await _teacherRepository.GetAll()
                     .AsNoTracking().FirstOrDefaultAsync(a => a.Id == id);
 
             if (model == null)
@@ -119,14 +128,20 @@ namespace MockSchoolManagement.Controllers
             //处理业务的视图模型
             var dto = new TeacherCreateViewModel
             {
-                Name = model.Name,
-                Id = model.Id,
                 HireDate = model.HireDate,
-                OfficeLocation = model.OfficeLocation
+                Name = model.Name,
+                UserCode = model.UserCode,
+                UserSex = model.UserSex,
+                Age = model.Age,
+                Title = model.Title,
+                TeacherPhone = model.TeacherPhone,
+                Address = model.Address,
+                TeachCourseName = model.TeachCourseName,
+                TeachClass = model.TeachClass
             };
             //从课程列表中处理哪些课程已经分配哪些为分配
-            var assignedCourses = AssignedCourseDroupDownList(model);
-            dto.AssignedCourses = assignedCourses;
+            //var assignedCourses = AssignedCourseDroupDownList(model);
+            //dto.AssignedCourses = assignedCourses;
             return View(dto);
         }
 
@@ -149,15 +164,24 @@ namespace MockSchoolManagement.Controllers
 
                 teacher.HireDate = input.HireDate;
                 teacher.Name = input.Name;
-                teacher.OfficeLocation = input.OfficeLocation;
-                teacher.CourseAssignments = new List<CourseAssignment>();
-                //从视图中获取被选中的课程信息
-                var courses = input.AssignedCourses.Where(a => a.IsSelected == true).ToList();
+                teacher.UserCode = input.UserCode;
+                teacher.UserSex = input.UserSex;
+                teacher.Age = input.Age;
+                teacher.Title = input.Title;
+                teacher.TeacherPhone = input.TeacherPhone;
+                teacher.Address = input.Address;
+                teacher.TeachCourseName = input.TeachCourseName;
+                teacher.TeachClass = input.TeachClass;
 
-                foreach (var item in courses)
-                {  //将选中的课程信息赋值到导航属性CourseAssignments中
-                    teacher.CourseAssignments.Add(new CourseAssignment { CourseID = item.CourseID, TeacherID = teacher.Id });
-                }
+                //teacher.OfficeLocation = input.OfficeLocation;
+                //teacher.CourseAssignments = new List<CourseAssignment>();
+                //从视图中获取被选中的课程信息
+                //var courses = input.AssignedCourses.Where(a => a.IsSelected == true).ToList();
+
+                //foreach (var item in courses)
+                //{  //将选中的课程信息赋值到导航属性CourseAssignments中
+                //    teacher.CourseAssignments.Add(new CourseAssignment { CourseID = item.CourseID, TeacherID = teacher.Id });
+                //}
 
                 await _teacherRepository.UpdateAsync(teacher);
 
@@ -184,6 +208,39 @@ namespace MockSchoolManagement.Controllers
             await _teacherRepository.DeleteAsync(a => a.Id == id);
             return RedirectToAction(nameof(Index));
         }
+
+
+        // Details视图接收加密后的StudentID
+        public async Task<IActionResult> Details(int id)
+        {
+            var model = await _teacherRepository.GetAll()
+                    .AsNoTracking().FirstOrDefaultAsync(a => a.Id == id);
+
+            if (model == null)
+            {
+                ViewBag.ErrorMessage = $"教师信息ID为{id}的信息不存在，请重试。";
+                return View("NotFound");
+            }
+            //处理业务的视图模型
+            var dto = new TeacherCreateViewModel
+            {
+                HireDate = model.HireDate,
+                Name = model.Name,
+                UserCode = model.UserCode,
+                UserSex = model.UserSex,
+                Age = model.Age,
+                Title = model.Title,
+                TeacherPhone = model.TeacherPhone,
+                Address = model.Address,
+                TeachCourseName = model.TeachCourseName,
+                TeachClass = model.TeachClass
+            };
+            //从课程列表中处理哪些课程已经分配哪些为分配
+            //var assignedCourses = AssignedCourseDroupDownList(model);
+            //dto.AssignedCourses = assignedCourses;
+            return View(dto);
+        }
+
 
         /// <summary>
         /// 处理课程列表是否被选中
