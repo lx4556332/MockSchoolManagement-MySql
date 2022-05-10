@@ -139,7 +139,7 @@ namespace MockSchoolManagement.Controllers
 
         #endregion 编辑
 
-        #region 添加
+        #region 添加班级
 
         public IActionResult Create()
         {

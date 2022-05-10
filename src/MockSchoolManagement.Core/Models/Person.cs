@@ -13,5 +13,27 @@ namespace MockSchoolManagement.Models
 
         [Display(Name = "电子邮箱")]
         public string Email { get; set; }
+
+        /// <summary>
+        /// 年龄
+        /// </summary>
+        public int Age { get; set; }
+
+        /// <summary>
+        /// 性别
+        /// </summary>
+        public string UserSex { get; set; }
+
+
+        /// <summary>
+        /// 编号或者学号
+        /// </summary>
+        public string UserCode { get; set; }
+
+        /// <summary>
+        /// 所属班级
+        /// </summary>
+        public string DepartmentName { get; set; }
+
     }
 }

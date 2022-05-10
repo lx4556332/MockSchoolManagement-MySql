@@ -17,4 +17,13 @@ namespace MockSchoolManagement.Models.EnumTypes
         [Display(Name = "数学")]
         Mathematics
     }
+
+    public enum UserSexEnum
+    {
+        [Display(Name = "男")]
+        Male,
+        [Display(Name = "女")]
+        Woman
+    }
+
 }

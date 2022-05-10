@@ -23,6 +23,7 @@ namespace MockSchoolManagement.Controllers
     public class HomeController : Controller
     {
         private readonly IRepository<Student, int> _studentRepository;
+        private readonly IRepository<Department, int> _departmentRepository;
         private readonly AppDbContext _dbcontext;
 
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -35,7 +36,7 @@ namespace MockSchoolManagement.Controllers
         //CreateProtector()方法是IDataProtectionProvider接口提供的,它实例化的名称dataProtectionProvider的方法CreateProtector()需要数据保护字符串
         //所以需要注入我们声明的数据保护用途的链接字符串
         //目前我们只需要保密Student中的id信息。
-        public HomeController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, IDataProtectionProvider dataProtectionProvider, DataProtectionPurposeStrings dataProtectionPurposeStrings, IRepository<Student, int> studentRepository, IStudentService studentService, AppDbContext dbcontext)
+        public HomeController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, IDataProtectionProvider dataProtectionProvider, IRepository<Department, int> departmentRepository,DataProtectionPurposeStrings dataProtectionPurposeStrings, IRepository<Student, int> studentRepository, IStudentService studentService, AppDbContext dbcontext)
         {
             _webHostEnvironment = webHostEnvironment;
             this.logger = logger;
@@ -44,6 +45,7 @@ namespace MockSchoolManagement.Controllers
                  dataProtectionPurposeStrings.StudentIdRouteValue);
             _studentService = studentService;
             _dbcontext = dbcontext;
+            this._departmentRepository = departmentRepository;
         }
 
         public async Task<IActionResult> Index(GetStudentInput input)
@@ -128,6 +130,8 @@ namespace MockSchoolManagement.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            var model =_departmentRepository.GetAll().AsNoTracking().ToList();
+            ViewBag.Departments = model;
             return View();
         }
 
@@ -140,9 +144,18 @@ namespace MockSchoolManagement.Controllers
                 var uniqueFileName = ProcessUploadedFile(model);
                 Student newStudent = new Student
                 {
+                    UserCode = model.UserCode,
                     Name = model.Name,
+                    UserSex=model.UserSex,
+                    Age=model.Age,
+                    ParentName=model.ParentName,
+                    ParentPhoneNo = model.ParentPhoneNo,
+                    ChineseScore = model.ChineseScore,
+                    MathScore = model.MathScore,
+                    EnglishScore = model.EnglishScore,
                     Email = model.Email,
                     Major = model.Major,
+                    DepartmentName=model.DepartmentName,
                     EnrollmentDate = model.EnrollmentDate,
                     // 将文件名保存在student对象的PhotoPath属性中。
                     //它将保存到数据库 Students的 表中
@@ -172,10 +185,22 @@ namespace MockSchoolManagement.Controllers
                 Id = id,
                 Name = student.Name,
                 Email = student.Email,
+                UserCode = student.UserCode,
+                UserSex = student.UserSex,
+                Age = student.Age,
+                ParentName = student.ParentName,
+                ParentPhoneNo = student.ParentPhoneNo,
+                ChineseScore = student.ChineseScore,
+                MathScore = student.MathScore,
+                EnglishScore = student.EnglishScore,
+                DepartmentName = student.DepartmentName,
                 Major = student.Major,
-                ExistingPhotoPath = student.PhotoPath,
                 EnrollmentDate = student.EnrollmentDate,
+                ExistingPhotoPath = student.PhotoPath,
             };
+            var model = _departmentRepository.GetAll().AsNoTracking().ToList();
+            ViewBag.Departments = model;
+
             return View(studentEditViewModel);
         }
 
@@ -191,7 +216,16 @@ namespace MockSchoolManagement.Controllers
                 var student = DecryptedStudent(model.Id);
 
                 //用模型对象中的数据更新student对象
+                student.UserCode = model.UserCode;
                 student.Name = model.Name;
+                student.UserSex = model.UserSex;
+                student.Age = model.Age;
+                student.ParentName = model.ParentName;
+                student.ParentPhoneNo = model.ParentPhoneNo;
+                student.ChineseScore = model.ChineseScore;
+                student.MathScore = model.MathScore;
+                student.EnglishScore = model.EnglishScore;
+                student.DepartmentName = model.DepartmentName;
                 student.Email = model.Email;
                 student.Major = model.Major;
                 student.EnrollmentDate = model.EnrollmentDate;

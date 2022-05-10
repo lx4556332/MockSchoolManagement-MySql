@@ -1,12 +1,23 @@
 ﻿@using MockSchoolManagement.Infrastructure.Repositories
 @model StudentCreateViewModel
 @inject IRepository<Student, int> StudentRepository
-@{ ViewBag.Title = "创建学生信息"; }
+@{ ViewBag.Title = "创建学生信息";
+   List<Department>  Departments = ViewBag.Departments;
+    }
 
 @* 请记得给form表单添加属性 enctype="multipart/form-data"*@
+<div class="container">
     <form enctype="multipart/form-data" asp-controller="home" asp-action="create" method="post" class="mt-3">
         <div asp-validation-summary="All" class="text-danger"></div>
 
+        <div class="form-group row">
+            <label asp-for="UserCode" class="col-sm-2 col-form-label">
+            </label>
+            <div class="col-sm-10">
+                <input asp-for="UserCode" class="form-control" placeholder="请输入编号" />
+                <span asp-validation-for="UserCode" class="text-danger"></span>
+            </div>
+        </div>
         <div class="form-group row">
             <label asp-for="Name" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
@@ -15,30 +26,79 @@
             </div>
         </div>
         <div class="form-group row">
-            <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+            <label asp-for="UserSex" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <input asp-for="Email" class="form-control" placeholder="请注入邮箱地址" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                <select asp-for="UserSex"
+                        class="custom-select mr-sm-2">
+                    <option value="">请选择</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
             </div>
         </div>
         <div class="form-group row">
+            <label asp-for="Age" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Age" class="form-control" placeholder="请输入年龄" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DepartmentName" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <select asp-for="DepartmentName"
+                        class="custom-select mr-sm-2">
+                    <option value="">请选择</option>
+                    @foreach (var dept in Departments)
+                    {
+                        <option value="@dept.Name">@dept.Name </option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="ParentName" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="ParentName" class="form-control" placeholder="请输入家长姓名" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="ParentPhoneNo" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="ParentPhoneNo" class="form-control" placeholder="请输入家长联系方式" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="ChineseScore" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="ChineseScore" class="form-control" placeholder="请输入语文成绩" />
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label asp-for="MathScore" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="MathScore" class="form-control" placeholder="请输入数学成绩" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="EnglishScore" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="EnglishScore" class="form-control" placeholder="请输入英语成绩" />
+            </div>
+        </div>
+        @*<div class="form-group row">
             <label asp-for="EnrollmentDate" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <input asp-for="EnrollmentDate" type="date"   class="form-control" placeholder="选择时间" />
+                <input asp-for="EnrollmentDate" type="date" class="form-control" placeholder="选择时间" />
                 <span asp-validation-for="EnrollmentDate" class="text-danger"></span>
             </div>
-        </div>
-        <div class="form-group row">
-            <label asp-for="Major" class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-10">
-                <select asp-for="Major"
-                        class="custom-select mr-sm-2"
-                        asp-items="Html.GetEnumSelectList<MajorEnum>()">
-                    <option value="">请选择</option>
-                </select>
-                <span asp-validation-for="Major" class="text-danger"></span>
-            </div>
-        </div>
+        </div>*@
+
         @* 我们使用了asp-for的taghelper设置input的属性为"Photos"。
         "Photos"属性类型是list<IFormFile>，这样就支持多文件上传了
         ， 所以在运行的时候ASP.NET Core会将该标签生成上传控件(input type=file) *@
@@ -53,17 +113,11 @@
         </div>
 
         <div class="form-group row">
-            <div class="col-sm-10">
+            <div class="col-sm-12 text-center">
+                <a asp-action="Index" asp-controller="home" class="btn btn-info">返回</a>
                 <button type="submit" class="btn btn-primary">创建</button>
             </div>
         </div>
-
-        <div class="form-group row">
-            <div class="col-sm-10">
-                学生总人数 = @StudentRepository.LongCount().ToString()
-            </div>
-        </div>
-
         @*以下JavaScript代码是必须的，它的作用是 -
         如果选择了单个文件，则显示该文件的名称。 -
         如果多个选择文件，然后显示文件数量。 *@
@@ -84,3 +138,4 @@
             </script>
         }
     </form>
+</div>

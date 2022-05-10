@@ -6,12 +6,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MockSchoolManagement.Models
 {
     /// <summary>
-    /// 系部
+    /// 班级名称
     /// </summary>
     public class Department
     {
         public int DepartmentID { get; set; }
-        [Display(Name = "院系名称")]
+        [Display(Name = "班级名称")]
         [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
 

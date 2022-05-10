@@ -14,17 +14,6 @@ namespace MockSchoolManagement.Models
         [Display(Name = "聘用时间")]
         public DateTime HireDate { get; set; }
 
-
-        /// <summary>
-        /// 教师编号
-        /// </summary>
-        public string TeacherCode { get; set; }
-
-        /// <summary>
-        /// 教师姓名
-        /// </summary>
-        public string TeacherName { get; set; }
-
         /// <summary>
         /// 职称
         /// </summary>

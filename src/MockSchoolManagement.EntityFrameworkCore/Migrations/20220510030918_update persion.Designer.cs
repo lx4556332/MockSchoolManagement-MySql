@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MockSchoolManagement.EntityFrameworkCore;
 
 namespace MockSchoolManagement.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220510030918_update persion")]
+    partial class updatepersion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -395,9 +397,6 @@ namespace MockSchoolManagement.EntityFrameworkCore.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<string>("DepartmentName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -474,7 +473,7 @@ namespace MockSchoolManagement.EntityFrameworkCore.Migrations
                     b.Property<float>("EnglishScore")
                         .HasColumnType("float");
 
-                    b.Property<DateTime?>("EnrollmentDate")
+                    b.Property<DateTime>("EnrollmentDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int?>("Major")

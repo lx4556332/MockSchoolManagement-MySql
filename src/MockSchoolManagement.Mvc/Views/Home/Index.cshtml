@@ -56,6 +56,14 @@
                     降序
                 </a>
             </th>
+            <th scope="col">
+                <a class="pl-3" asp-action="Index" asp-route-Sorting="DepartmentName" asp-route-CurrentPage="@Model.CurrentPage" asp-route-FilterText="@Model.FilterText">
+                    班级
+                </a>
+                <a class="pl-3" asp-action="Index" asp-route-Sorting="DepartmentName desc" asp-route-CurrentPage="@Model.CurrentPage" asp-route-FilterText="@Model.FilterText">
+                    降序
+                </a>
+            </th>
             <th>
                 <a asp-action="Index" asp-route-Sorting="ParentName" asp-route-CurrentPage="@Model.CurrentPage" asp-route-FilterText="@Model.FilterText">
                     家长姓名
@@ -107,39 +115,40 @@
             {
                 photoPath = "~/images/avatars/" + student.PhotoPath;
             }
-<tr>
-    <td>
-        <img class="table-img  imageThumbnail " src="@photoPath" asp-append-version="true" />
-    </td>
-    <td scope="row">@student.UserCode</td>
-    <td scope="row">@student.Name</td>
-    <td>@student.UserSex</td>
-    <td>@student.Age</td>
-    <td>@student.ParentName</td>
-    <td>@student.ParentPhoneNo</td>
-    <td>@student.ChineseScore</td>
-    <td>@student.MathScore</td>
-    <td>@student.EnglishScore</td>
-    <td>
-        <form method="post" asp-action="DeleteUser" asp-route-id="@student.Id">
-            <a asp-controller="Home" class="btn btn-info" asp-action="Details" asp-route-id="@student.EncryptedId">查看</a>
-            <a asp-controller="home" asp-action="edit" asp-route-id="@student.EncryptedId" class="btn btn-primary m-1">编辑</a>
+        <tr>
+            <td>
+                <img class="table-img  imageThumbnail " src="@photoPath" asp-append-version="true" />
+            </td>
+            <td scope="row">@student.UserCode</td>
+            <td scope="row">@student.Name</td>
+            <td>@student.UserSex</td>
+            <td>@student.Age</td>
+            <td>@student.DepartmentName</td>
+            <td>@student.ParentName</td>
+            <td>@student.ParentPhoneNo</td>
+            <td>@student.ChineseScore</td>
+            <td>@student.MathScore</td>
+            <td>@student.EnglishScore</td>
+            <td>
+                <form method="post" asp-action="DeleteUser" asp-route-id="@student.Id">
+                    <a asp-controller="Home" class="btn btn-info" asp-action="Details" asp-route-id="@student.EncryptedId">查看</a>
+                    <a asp-controller="home" asp-action="edit" asp-route-id="@student.EncryptedId" class="btn btn-primary m-1">编辑</a>
 
-            <span id="confirmDeleteSpan_@student.Id" style="display: none">
-                <span>你确定你要删除?</span>
-                <button type="submit" class="btn btn-danger">是</button>
-                <a href="#"
-                   class="btn btn-primary"
-                   onclick="confirmDelete('@student.Id', false)">
-                    否
-                </a>
-            </span>
+                    <span id="confirmDeleteSpan_@student.Id" style="display: none">
+                        <span>你确定你要删除?</span>
+                        <button type="submit" class="btn btn-danger">是</button>
+                        <a href="#"
+                           class="btn btn-primary"
+                           onclick="confirmDelete('@student.Id', false)">
+                            否
+                        </a>
+                    </span>
 
-            <span id="deleteSpan_@student.Id">
-                <a href="#" class="btn btn-danger" onclick="confirmDelete('@student.Id', true)">删除</a>
-            </span>
-        </form>
-</tr>                }
+                    <span id="deleteSpan_@student.Id">
+                        <a href="#" class="btn btn-danger" onclick="confirmDelete('@student.Id', true)">删除</a>
+                    </span>
+                </form>
+        </tr>                }
     </tbody>
 </table>}
 

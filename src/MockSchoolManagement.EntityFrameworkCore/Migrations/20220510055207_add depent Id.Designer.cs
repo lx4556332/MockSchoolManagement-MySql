@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MockSchoolManagement.EntityFrameworkCore;
 
 namespace MockSchoolManagement.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220510055207_add depent Id")]
+    partial class adddepentId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -335,6 +337,9 @@ namespace MockSchoolManagement.EntityFrameworkCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int?>("AdministratorId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Budget")
                         .HasColumnType("decimal(65,30)");
 
@@ -367,7 +372,7 @@ namespace MockSchoolManagement.EntityFrameworkCore.Migrations
 
                     b.HasKey("DepartmentID");
 
-                    b.HasIndex("TeacherID");
+                    b.HasIndex("AdministratorId");
 
                     b.ToTable("Departments");
                 });
@@ -395,8 +400,8 @@ namespace MockSchoolManagement.EntityFrameworkCore.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<string>("DepartmentName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
@@ -617,7 +622,7 @@ namespace MockSchoolManagement.EntityFrameworkCore.Migrations
                 {
                     b.HasOne("MockSchoolManagement.Models.Teacher", "Administrator")
                         .WithMany()
-                        .HasForeignKey("TeacherID")
+                        .HasForeignKey("AdministratorId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
