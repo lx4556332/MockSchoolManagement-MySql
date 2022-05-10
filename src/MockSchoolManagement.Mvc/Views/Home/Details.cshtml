@@ -18,10 +18,10 @@
             </div>
             <div class="card-body text-center">
                 <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
-                <h4>学生ID : @Model.Student.Id</h4>
-                <h4>邮箱 : @Model.Student.Email</h4>
-                <h4>主修科目 :@Model.Student.Major.GetDisplayName()  </h4>
-                <h4>入学时间 :@Model.Student.EnrollmentDate.ToString("yyyy-MM-dd")  </h4>
+                <h4>学生编号 : @Model.Student.UserCode</h4>
+                <h4>学生姓名 : @Model.Student.Name</h4>
+                <h4>学生性别 : @Model.Student.Major.GetDisplayName()  </h4>
+                <h4>入学时间 : @Model.Student.EnrollmentDate.ToString("yyyy-MM-dd")  </h4>
             </div>
            
             <div class="card-footer text-center">
