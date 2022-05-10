@@ -27,7 +27,7 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <a class="navbar-brand" asp-controller="home" asp-action="index">
-                <img src="~/images/student.png" width="30" height="30" />
+                <img src="~/images/banner.png" width="320" height="30" />
             </a>
             <button class="navbar-toggler"
                     type="button"
@@ -42,20 +42,20 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="home" asp-action="index">学生列表</a>
                     </li>
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link" asp-controller="Course" asp-action="index">课程管理</a>
-                    </li>
+                    </li>*@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Teacher" asp-action="index">教师管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Departments" asp-action="index">部门管理</a>
+                        <a class="nav-link" asp-controller="Departments" asp-action="index">班级管理</a>
                     </li>
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link" href="/swagger">Swagger-UI</a>
-                    </li>
+                    </li>*@
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="home" asp-action="About">关于我们</a>
+                        <a class="nav-link" asp-controller="home" asp-action="About">汇总统计</a>
                     </li>
 
                     @if (_signInManager.IsSignedIn(User))

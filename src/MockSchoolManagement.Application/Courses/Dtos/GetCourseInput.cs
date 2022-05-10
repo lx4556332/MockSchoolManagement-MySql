@@ -12,7 +12,7 @@ namespace MockSchoolManagement.Application.Courses.Dtos
         public GetCourseInput()
         {          
                 Sorting = "CourseID";
-            MaxResultCount = 5;
+            MaxResultCount = 10;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace MockSchoolManagement.Application.Teachers
         public GetTeacherInput()
         {
             Sorting = "Id";
-            MaxResultCount = 3;
+            MaxResultCount = 10;
         }
     }
 }

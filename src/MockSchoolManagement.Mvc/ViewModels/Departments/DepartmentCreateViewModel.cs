@@ -10,35 +10,36 @@ namespace MockSchoolManagement.ViewModels.Departments
         public int DepartmentID { get; set; }
 
         [StringLength(50, MinimumLength = 3)]
-        [Display(Name = "院系名称")]
+        [Display(Name = "班级名称")]
         public string Name { get; set; }
 
         /// <summary>
-        /// 预算
+        /// 班级编号
         /// </summary>
         [DataType(DataType.Currency)]
-        [Display(Name = "预算")]
-        public decimal Budget { get; set; }
+        [Display(Name = "班级编号")]
+        public string ClassCode { get; set; }
 
-        /// <summary>
-        /// 成立时间
-        /// </summary>
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "成立时间")]
-        public DateTime StartDate { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
-        [Display(Name = "负责人")]
+        [Display(Name = "班主任")]
         public SelectList TeacherList { get; set; }
+
 
         public int? TeacherID { get; set; }
 
         /// <summary>
-        /// 系部主任
+        /// 班主任
         /// </summary>
         public Teacher Administrator { get; set; }
+
+
+        /// <summary>
+        /// 日常评分
+        /// </summary>
+        [Display(Name = "日常评分")]
+        public float? ClassScore { get; set; }
     }
 }

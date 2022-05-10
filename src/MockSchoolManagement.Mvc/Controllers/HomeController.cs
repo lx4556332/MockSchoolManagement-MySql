@@ -306,7 +306,7 @@ namespace MockSchoolManagement.Controllers
                 //建立链接，因为非委托资源所以需要使用using进行内存资源的释放
                 using (var command = conn.CreateCommand())
                 {
-                    string query = "SELECT EnrollmentDate, COUNT(*) AS StudentCount   FROM Person  WHERE Discriminator = 'Student'  GROUP BY EnrollmentDate";
+                    string query = "SELECT DepartmentName, COUNT(*) AS StudentCount   FROM Person  WHERE Discriminator = 'Student'  GROUP BY DepartmentName";
                     command.CommandText = query; //赋值需要执行的sql命令
                     DbDataReader reader = await command.ExecuteReaderAsync();//执行命令
                     if (reader.HasRows)//判断是否有返回行
@@ -315,7 +315,7 @@ namespace MockSchoolManagement.Controllers
                         {
                             var row = new EnrollmentDateGroupDto
                             {
-                                EnrollmentDate = reader.GetDateTime(0),
+                                DepartmentName = reader.GetString(0),
                                 StudentCount = reader.GetInt32(1)
                             };
                             groups.Add(row);

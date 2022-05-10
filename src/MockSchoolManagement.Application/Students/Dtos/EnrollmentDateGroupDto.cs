@@ -15,11 +15,9 @@ namespace MockSchoolManagement.Application.Students.Dtos
     {
 
         /// <summary>
-        /// 入学时间
+        /// 班级时间
         /// </summary>
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? EnrollmentDate { get; set; }
+        public string DepartmentName { get; set; }
 
         public int StudentCount { get; set; }
     }

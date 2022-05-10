@@ -7,7 +7,7 @@ namespace MockSchoolManagement.Application.Teachers
         public GetDepartmentInput()
         {
             Sorting = "Name";
-            MaxResultCount = 3;
+            MaxResultCount = 10;
         }
     }
 }

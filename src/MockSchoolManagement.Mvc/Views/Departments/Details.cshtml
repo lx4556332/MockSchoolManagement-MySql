@@ -1,26 +1,49 @@
 ﻿@model Department
 @{
-    ViewBag.Title = "部门详情信息";
+    ViewBag.Title = "班级详情信息";
 }
+<h3>班级详情信息</h3>
 <div class="row justify-content-center m-3">
-    <div class="col-sm-6">
-
-        <div class="card bg-light mb-3" style="max-width: 18rem;">
+        <div class="card bg-light mb-3" style="width:1280px">
             <div class="card-header">
-                <h1>@Model.Name  详情 </h1>
+                <h3>@Model.Name  详情 </h3>
             </div>
             <div class="card-body text-center">
-                <h5 class="card-title">
-                    @Html.DisplayNameFor(a => a.Name) : @Model.Name
-                </h5>
-                <h5 class="card-title">@Html.DisplayNameFor(a => a.StartDate) : @Html.DisplayFor(a => a.StartDate)</h5>
-                <h5 class="card-title">@Html.DisplayNameFor(a => a.Budget) : @Html.DisplayFor(a => a.Budget)</h5>
-                <h5 class="card-title">@Html.DisplayNameFor(a => a.TeacherID): @Model.Administrator.Name</h5>
+                <div class="form-group row">
+                    <label class="col-sm-3 offset-3 text-right">班级名称：</label>
+                    <label class="col-sm-6 text-left">
+                        @Model.Name
+                    </label>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 offset-3 text-right">班级编号：</label>
+                    <label class="col-sm-6 text-left">
+                        @Model.ClassCode
+                    </label>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 offset-3 text-right">班级日常评分：</label>
+                    <label class="col-sm-6 text-left">
+                        @Model.ClassScore
+                    </label>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 offset-3 text-right">班主任姓名：</label>
+                    <label class="col-sm-6 text-left">
+                        @Model.Administrator.Name
+                    </label>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 offset-3 text-right">班主任电话：</label>
+                    <label class="col-sm-6 text-left">
+                        @Model.Administrator.TeacherPhone
+                    </label>
+                </div>
             </div>
             <div class="card-footer text-center">
                 <a asp-action="Index" class="btn btn-info">返回</a>
                 <a asp-action="edit" asp-route-Id="@Model.DepartmentID" class="btn btn-primary">编辑</a>
             </div>
         </div>
-    </div>
+
 </div>

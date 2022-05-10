@@ -27,7 +27,7 @@ namespace MockSchoolManagement.Models
         [DataType(DataType.Currency)]
         [Display(Name = "预算")]
 
-        public decimal Budget { get; set; }
+        public decimal? Budget { get; set; }
 
         /// <summary>
         /// 成立时间
@@ -35,7 +35,7 @@ namespace MockSchoolManagement.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "成立时间")]
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
@@ -47,24 +47,11 @@ namespace MockSchoolManagement.Models
         /// 系部主任
         /// </summary
         public virtual Teacher Administrator { get; set; }
-        public virtual ICollection<Course> Courses { get; set; }
-
-
-        /// <summary>
-        /// 班主任名称
-        /// </summary>
-        public string HeadTeacherName { get; set; }
-
-
-        /// <summary>
-        /// 班主任联系方式
-        /// </summary>
-        public string HeadTeacherPhone { get; set; }
-
+        public virtual ICollection<Course>? Courses { get; set; }
 
         /// <summary>
         /// 班级日常评分
         /// </summary>
-        public float ClassScore { get; set; }
+        public float? ClassScore { get; set; }
     }
 }

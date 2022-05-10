@@ -65,8 +65,8 @@ namespace MockSchoolManagement.Controllers
             {
                 DepartmentID = model.DepartmentID,
                 Name = model.Name,
-                Budget = model.Budget,
-                StartDate = model.StartDate,
+                ClassScore = model.ClassScore,
+                ClassCode = model.ClassCode,
                 TeacherID = model.TeacherID,
                 Administrator = model.Administrator,
                 RowVersion = model.RowVersion,
@@ -89,8 +89,8 @@ namespace MockSchoolManagement.Controllers
                 }
                 model.DepartmentID = input.DepartmentID;
                 model.Name = input.Name;
-                model.Budget = input.Budget;
-                model.StartDate = input.StartDate;
+                model.ClassScore = input.ClassScore;
+                model.ClassCode = input.ClassCode;
                 model.TeacherID = input.TeacherID;
 
                 //从数据库中获取Department实体中的 RowVersion属性，然后将input.RowVersion赋值到OriginalValue中，EF Core会将两个值进行比较。
@@ -157,10 +157,10 @@ namespace MockSchoolManagement.Controllers
             {
                 Department model = new Department
                 {
-                    StartDate = input.StartDate,
+                    ClassCode = input.ClassCode,
                     DepartmentID = input.DepartmentID,
                     TeacherID = input.TeacherID,
-                    Budget = input.Budget,
+                    ClassScore = input.ClassScore,
                     Name = input.Name,
                 };
                 await _departmentRepository.InsertAsync(model);
@@ -180,7 +180,7 @@ namespace MockSchoolManagement.Controllers
 
             if (model == null)
             {
-                ViewBag.ErrorMessage = $"院系编号{id}的信息不存在，请重试。";
+                ViewBag.ErrorMessage = $"班级编号{id}的信息不存在，请重试。";
                 return View("NotFound");
             }
 
@@ -194,7 +194,7 @@ namespace MockSchoolManagement.Controllers
 
         public async Task<IActionResult> Details(int Id)
         {
-            string query = "SELECT * FROM dbo.Departments WHERE DepartmentID={0}";
+            string query = "SELECT * FROM Departments WHERE DepartmentID={0}";
             var model = await _dbcontext.Departments.FromSqlRaw(query, Id).Include(d => d.Administrator)
                       .AsNoTracking()
                       .FirstOrDefaultAsync();
